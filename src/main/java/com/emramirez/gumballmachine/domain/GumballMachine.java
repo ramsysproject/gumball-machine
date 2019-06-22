@@ -17,7 +17,7 @@ public class GumballMachine {
     }
 
     public void insertQuarter() {
-        if (state == NO_QUARTER) {
+        if (state == HAS_QUARTER) {
             System.out.println("You can't insert another quarter");
         } else if (state == NO_QUARTER) {
             System.out.println("You inserted a quarter");
