@@ -1,8 +1,13 @@
 package com.emramirez.gumballmachine.domain;
 
+import com.emramirez.gumballmachine.remote.GumballMachineRemote;
 import com.emramirez.gumballmachine.state.*;
 
-public class ImprovedGumballMachine {
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
+public class ImprovedGumballMachine extends UnicastRemoteObject implements GumballMachineRemote {
+    private static final long serialVersionUID = 1L;
     private State soldOutState;
     private State noQuarterState;
     private State hasQuarterState;
@@ -10,15 +15,17 @@ public class ImprovedGumballMachine {
     private State winnerState;
 
     private State state;
+    private String location;
     int count = 0;
 
-    public ImprovedGumballMachine(int numberGumballs) {
+    public ImprovedGumballMachine(int numberGumballs, String location) throws RemoteException {
         soldOutState = new SoldOutState(this);
         noQuarterState = new NoQuarterState(this);
         hasQuarterState = new HasQuarterState(this);
         soldState = new SoldState(this);
         winnerState = new WinnerState(this);
 
+        this.location = location;
         this.count = numberGumballs;
         if (numberGumballs > 0) {
             state = noQuarterState;
@@ -42,6 +49,10 @@ public class ImprovedGumballMachine {
 
     public void setState(State state) {
         this.state = state;
+    }
+
+    public State getState() {
+        return state;
     }
 
     public void releaseBall() {
@@ -73,5 +84,9 @@ public class ImprovedGumballMachine {
 
     public State getWinnerState() {
         return winnerState;
+    }
+
+    public String getLocation() {
+        return location;
     }
 }

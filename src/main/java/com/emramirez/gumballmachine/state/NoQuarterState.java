@@ -3,8 +3,8 @@ package com.emramirez.gumballmachine.state;
 import com.emramirez.gumballmachine.domain.ImprovedGumballMachine;
 
 public class NoQuarterState implements State {
-
-    private ImprovedGumballMachine gumballMachine;
+    private static final long serialVersionUID = 1L;
+    private transient ImprovedGumballMachine gumballMachine;
 
     public NoQuarterState(ImprovedGumballMachine gumballMachine) {
         this.gumballMachine = gumballMachine;

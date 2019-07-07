@@ -3,8 +3,8 @@ package com.emramirez.gumballmachine.state;
 import com.emramirez.gumballmachine.domain.ImprovedGumballMachine;
 
 public class WinnerState implements State {
-
-    private ImprovedGumballMachine improvedGumballMachine;
+    private static final long serialVersionUID = 1L;
+    private transient ImprovedGumballMachine improvedGumballMachine;
 
     public WinnerState(ImprovedGumballMachine improvedGumballMachine) {
         this.improvedGumballMachine = improvedGumballMachine;

@@ -5,8 +5,9 @@ import com.emramirez.gumballmachine.domain.ImprovedGumballMachine;
 import java.util.Random;
 
 public class HasQuarterState implements State {
+    private static final long serialVersionUID = 1L;
     Random randomWinner = new Random(System.currentTimeMillis());
-    private ImprovedGumballMachine improvedGumballMachine;
+    private transient ImprovedGumballMachine improvedGumballMachine;
 
     public HasQuarterState(ImprovedGumballMachine improvedGumballMachine) {
         this.improvedGumballMachine = improvedGumballMachine;
